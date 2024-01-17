@@ -11,15 +11,15 @@ function App() {
   */
   const [time, setTime] = useState(0);
   const [start, setStart] = useState(true);
-  const [restart, setRestart] = useState(false);
+  
   const parar =()=> {
       setStart(!start);
     }
     const reiniciar =()=> {
-      setRestart(!restart);
+      setTime(0);
     }
   const comenzar=()=>{
-    while(start===true){
+    
       setTime(time +1)
       /*
       if (segundos<59){
@@ -35,7 +35,7 @@ function App() {
         }
       }
       */
-    }
+    
   }
   
   return (
