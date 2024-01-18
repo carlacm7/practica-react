@@ -1,0 +1,19 @@
+.list-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10%;
+}
+ul {
+    margin-top: 10px;
+}
+li{
+    display: flex;
+    margin-bottom: 10px;
+}
+li button{
+    margin-left: 4px;
+    width: auto;
+    background-color: red;
+}

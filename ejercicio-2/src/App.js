@@ -1,47 +1,38 @@
 
 import './App.css';
-import {useState} from 'react';
+import {useState,useEffect} from 'react';
 import Content from './components/Content';
 import Boton from './components/Boton';
 function App() {
-  /*
-    const [segundos, setSegundos] = useState(0);
-    const [minutos, setMinutos] = useState(0);
-    const [horas, setHoras] = useState(0);
-  */
   const [time, setTime] = useState(0);
-  const [start, setStart] = useState(true);
-  
-  const parar =()=> {
-      setStart(!start);
+  const [start, setStart] = useState(false);
+  useEffect(()=>{
+    let intervalo;
+    if(start===true){
+      intervalo=setInterval(()=>setTime(time+1),10);
     }
-    const reiniciar =()=> {
-      setTime(0);
-    }
+    return ()=> clearInterval(intervalo)
+  },[start,time]);
+  const horas= Math.floor(time/360000);
+  const minutos= Math.floor((time%360000)/6000);
+  const segundos= Math.floor((time%6000)/100);
   const comenzar=()=>{
-    
-      setTime(time +1)
-      /*
-      if (segundos<59){
-        setSegundos(segundos +1);
-      }else{
-        if (minutos<59){
-          setMinutos(minutos +1);
-          setSegundos(0);
-        }else{
-          setHoras(horas +1);
-          setSegundos(0);
-          setMinutos(0);
-        }
-      }
-      */
-    
-  }
+    setStart(!start);
+  };
+  const parar=()=>{
+    setStart(!start);
+  };
+
+  const reiniciar =()=> {
+      setTime(0);
+  };
+
+  
   
   return (
     <div className="App">
       <div className="contenedor-principal">
-        <Content texto="Timer" time={time}/*segundos={segundos} minutos={minutos} horas={horas}*//>        
+        <Content texto="Timer" segundos={segundos} minutos={minutos} horas={horas}/>        
         <div className='contenedor-botones'>
           <Boton texto="Start" classBoton="start" funcionClick={comenzar}/>
           <Boton texto="Stop" classBoton="stop"  funcionClick={parar}/>

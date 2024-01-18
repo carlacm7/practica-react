@@ -1,0 +1,13 @@
+.agregar{
+    display: flex;
+}
+input{
+    border-radius: 4px;
+    color: gray;
+}
+button{
+    border-radius: 5px;
+    background-color: rgb(76, 221, 47);
+    color: aliceblue;
+    margin-left: 10px;
+}
