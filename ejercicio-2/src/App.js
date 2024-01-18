@@ -9,13 +9,13 @@ function App() {
   useEffect(()=>{
     let intervalo;
     if(start===true){
-      intervalo=setInterval(()=>setTime(time+1),10);
+      intervalo=setInterval(()=>setTime(time+1),1000);
     }
     return ()=> clearInterval(intervalo)
   },[start,time]);
-  const horas= Math.floor(time/360000);
-  const minutos= Math.floor((time%360000)/6000);
-  const segundos= Math.floor((time%6000)/100);
+  const horas= Math.floor(time/3600);
+  const minutos= Math.floor((time%3600)/60);
+  const segundos= Math.floor(time%60);
   const comenzar=()=>{
     setStart(!start);
   };
